@@ -1,0 +1,906 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:context=".View_AllUsers">
+
+        <!-- Page Heading -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/pageHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Info"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"/>
+
+        <!-- Account Number -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/accountNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account Number"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pageHeading"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Account Number -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/accountNumberCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/accountNumberTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Account Number Text Field -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/accountNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Full Name -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fullNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/accountNumberCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Full Name -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/fullNameCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullNameTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Full Name Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fullNameEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Special Loan -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/SpecialLoanTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Special Loan"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullNameCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/SpecialLoanCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SpecialLoanTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SpecialLoanEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Special Loan Interest-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/SpecialLoanInterestTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Special Loan Interest"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SpecialLoanCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/SpecialLoanInterestCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SpecialLoanInterestTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SpecialLoanInterestEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+        <!-- Special Loan Interest-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/SpecialLoanInstallmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Special Loan Installment"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SpecialLoanInterestCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/SpecialLoanInstallmentCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SpecialLoanInstallmentTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SpecialLoanInstallmentEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Repeat the above structure for other fields -->
+
+
+        <!-- Special Loan Interest-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RegularLoanTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular Loan"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SpecialLoanInstallmentCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/RegularLoanCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegularLoanTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RegularLoanEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <!-- Regular Loan Interest TextView -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RegularLoanInterestTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular Loan Interest"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegularLoanCardView"
+            android:layout_marginTop="5dp"
+            app:backgroundTint="@android:color/transparent" /> <!-- Set background to transparent -->
+
+        <!-- MaterialCardView for Regular Loan Interest -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/RegularLoanInterestCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegularLoanInterestTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Regular Loan Interest EditText -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RegularLoanInterestEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <!-- Special Loan Interest-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RegularLoanInstallmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular Loan Installment"
+            android:textSize="16sp"
+            app:backgroundTint="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegularLoanInterestCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/RegularLoanInstallmentCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegularLoanInstallmentTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RegularLoanInstallmentEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+<!--        Emergency Loan   -->
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/EmergencyLoanTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Loan"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RegularLoanInstallmentCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/EmergencyLoanCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EmergencyLoanTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EmergencyLoanEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <!-- Special Loan Interest-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/EmergencyLoanInterestTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Loan Interest"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EmergencyLoanCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/EmergencyLoanInterestCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EmergencyLoanInterestTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EmergencyLoanInterestEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Special Loan Interest-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/EmergencyLoanInstallmentTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Loan Installment"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EmergencyLoanInterestCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/EmergencyLoanInstallmentCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EmergencyLoanInstallmentTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EmergencyLoanInstallmentEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- Special Loan Interest-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/PenaltyInterestTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Penalty Interest"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EmergencyLoanInstallmentCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/PenaltyInterestCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/PenaltyInterestTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PenaltyInterestEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/SharesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shares"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/PenaltyInterestCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/SharesCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SharesTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SharesEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/GrossPayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gross Pay"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SharesCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/GrossPayCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/GrossPayTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/GrossPayEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/CollegeDeductionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="College Deduction"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/GrossPayCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/CollegeDeductionCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/CollegeDeductionTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/CollegeDeductionEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ArrearsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arrears"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/CollegeDeductionCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ArrearsCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ArrearsTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ArrearsEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RetirementDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retirement Date"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ArrearsCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/RetirementDateCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RetirementDateTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RetirementDateEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/SocietyDeductionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Society Deduction"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RetirementDateCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/SocietyDeductionCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SocietyDeductionTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SocietyDeductionEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/TotalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SocietyDeductionCardView"
+            android:layout_marginTop="5dp"/>
+
+        <!-- MaterialCardView for Special Loan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/TotalCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TotalTextView"
+            android:layout_marginBottom="5dp">
+
+            <!-- Nested ConstraintLayout for Card Content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp">
+
+                <!-- Special Loan Text Field -->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TotalEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

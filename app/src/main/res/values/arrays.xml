@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="loan_types">
+        <item>Regular</item>
+        <item>Special</item>
+        <item>Emergency</item>
+    </string-array>
+</resources>
