@@ -4,22 +4,23 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import androidx.cardview.widget.CardView
 
 class AdminOperations : AppCompatActivity() {
 
-    private lateinit var allUsersFrameLayout: FrameLayout
-    private lateinit var addUserFrameLayout: FrameLayout
-    private lateinit var updateDataFrameLayout: FrameLayout
-    private lateinit var activeLoanUsersFrameLayout: FrameLayout
+    private lateinit var allUsersFrameLayout: CardView
+    private lateinit var addUserFrameLayout: CardView
+    private lateinit var updateDataFrameLayout: CardView
+    private lateinit var activeLoanUsersFrameLayout: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin_operations)
+        setContentView(R.layout.admin_operations)
 
         allUsersFrameLayout = findViewById(R.id.all_users)
         addUserFrameLayout = findViewById(R.id.add_user)
         updateDataFrameLayout = findViewById(R.id.update_data)
-        activeLoanUsersFrameLayout = findViewById(R.id.active_loan_users)
+        activeLoanUsersFrameLayout = findViewById(R.id.active_users)
 
         allUsersFrameLayout.setOnClickListener {
             val intent = Intent(this, AllUsers::class.java)

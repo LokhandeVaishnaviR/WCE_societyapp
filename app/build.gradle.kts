@@ -56,4 +56,21 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.android.gms:play-services-auth:21.0.0")
+
+
+    //authentication
+    implementation ("com.google.firebase:firebase-auth-ktx:21.0.1")
+
+
+
+//    buildscript {
+//        repositories {
+//            google()
+//            // Other repositories
+//        }
+//        dependencies {
+//            implementation( "com.google.gms:google-services:4.3.10" )// Or the latest version
+//        }
+//    }
+
 }

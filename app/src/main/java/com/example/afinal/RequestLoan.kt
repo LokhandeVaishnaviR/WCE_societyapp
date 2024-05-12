@@ -37,7 +37,7 @@ class RequestLoan : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_request_loan)
+        setContentView(R.layout.request_loan_changes)
 
         headerTextView = findViewById(R.id.text_header)
         loanTypeSpinner = findViewById(R.id.spinner_loan_type)

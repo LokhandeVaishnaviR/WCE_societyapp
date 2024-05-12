@@ -12,10 +12,14 @@ import com.google.firebase.ktx.Firebase
 class createUser : AppCompatActivity() {
 
     data class constant(
-        val AccountNo : String
+        val AccountNo: String
     )
 
-    
+    data class TransactionHistory(
+        val loanType: String,
+        val loanAmount: Double,
+        val transactionDate: String
+    )
 
     data class UserProfile(
         val AccountNo: String,
@@ -25,7 +29,8 @@ class createUser : AppCompatActivity() {
         val password: String,
         val address: String,
         val department: String,
-        val salary: Double
+        val salary: Double,
+        val transactions: ArrayList<TransactionHistory> = ArrayList()
     )
 
     private lateinit var fullNameTextInputEditText: TextInputEditText
@@ -39,12 +44,12 @@ class createUser : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_user)
+        setContentView(R.layout.create_user_changes)
 
         val db = Firebase.firestore
 
-        fullNameTextInputEditText = findViewById(R.id.fullNameTextInputEditText)
-        emailTextInputEditText = findViewById(R.id.emailTextInputEditText)
+        fullNameTextInputEditText = findViewById(R.id.fullNameEditText)
+        emailTextInputEditText = findViewById(R.id.emailEditText)
         contactNumberTextInputEditText = findViewById(R.id.contactNumberTextInputEditText)
         passwordTextInputEditText = findViewById(R.id.passwordTextInputEditText)
         addressTextInputEditText = findViewById(R.id.addressTextInputEditText)
@@ -77,7 +82,8 @@ class createUser : AppCompatActivity() {
                             .document("latestAccountNo")
                             .set(mapOf("AccountNo" to newAccountNo))
 
-                        // Create the user profile with the new account number
+//                         Create the user profile with the new account number
+
                         val user = UserProfile(
                             newAccountNo,
                             fullName,
@@ -86,7 +92,8 @@ class createUser : AppCompatActivity() {
                             password,
                             address,
                             department,
-                            salary
+                            salary,
+
                         )
 
                         // Add the user profile to Firestore
@@ -104,12 +111,9 @@ class createUser : AppCompatActivity() {
                     .addOnFailureListener { exception ->
                         Log.e("Error", "Error getting latest account number", exception)
                     }
-            } catch (e : Exception){
+            } catch (e: Exception) {
                 print(e.toString())
             }
-
-
-
         }
     }
 

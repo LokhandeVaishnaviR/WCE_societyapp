@@ -52,7 +52,7 @@ class UpdateData : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_update_data)
+        setContentView(R.layout.update_data_changes)
 
         retirementEditText = findViewById(R.id.retirementEditText)
         totalMonthsEditText = findViewById(R.id.totalMonthsEditText)

@@ -22,42 +22,42 @@ class MaxLoan_In_UserPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_max_loan_in_user_page)
+        setContentView(R.layout.max_loan_changes)
 
-        spinnerLoanType = findViewById(R.id.spinner_loan_type)
+
         specialLoanText = findViewById(R.id.special_loan_text)
         regularLoanText = findViewById(R.id.regular_loan_text)
         emergencyLoanText = findViewById(R.id.emergency_loan_text)
 
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.loan_options,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerLoanType.adapter = adapter
-        }
+//        ArrayAdapter.createFromResource(
+//            this,
+//            R.array.loan_options,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            spinnerLoanType.adapter = adapter
+//        }
 
-        spinnerLoanType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parentView: AdapterView<*>,
-                selectedItemView: View,
-                position: Int,
-                id: Long
-            ) {
-                val selectedOption = parentView.getItemAtPosition(position).toString()
-                // Show a toast message indicating the selected loan type
-                Toast.makeText(
-                    applicationContext,
-                    "$selectedOption selected",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            override fun onNothingSelected(parentView: AdapterView<*>) {
-                // Do nothing
-            }
-        }
+//        spinnerLoanType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parentView: AdapterView<*>,
+//                selectedItemView: View,
+//                position: Int,
+//                id: Long
+//            ) {
+//                val selectedOption = parentView.getItemAtPosition(position).toString()
+//                // Show a toast message indicating the selected loan type
+//                Toast.makeText(
+//                    applicationContext,
+//                    "$selectedOption selected",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//
+//            override fun onNothingSelected(parentView: AdapterView<*>) {
+//                // Do nothing
+//            }
+//        }
 
         var loanType: Long = 500000
         var interest: Double = 8.5
@@ -98,13 +98,26 @@ class MaxLoan_In_UserPage : AppCompatActivity() {
                         max_emergency = totalDeduct(SLI, SLIt, ELI, ELIt, CD, RW, prevRLI, prevRLIt, Salary, 0.11, loanType, vima)
 
                         //print max special loan
-                        specialLoanText.text = max_special.toString()
+
+                        if (max_special > 2000000) {
+                            specialLoanText.text = "2500000"
+                        } else {
+                            specialLoanText.text = max_special.toString()
+                        }
 
                         //print max regular loan
-                        regularLoanText.text = max_regular.toString()
+                        if (max_regular > 500000) {
+                            regularLoanText.text = "500000"
+                        } else {
+                            regularLoanText.text = max_regular.toString()
+                        }
 
-                        //print max emergency loan
-                        emergencyLoanText.text = max_emergency.toString()
+
+                        if (max_emergency > 50000) {
+                            emergencyLoanText.text = "50000"
+                        } else {
+                            emergencyLoanText.text = max_emergency.toString()
+                        }
                     }
                 }
                 .addOnFailureListener { exception ->

@@ -13,6 +13,8 @@ class HistoryPage : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: TransactionAdapter
     private val db = FirebaseFirestore.getInstance()
+    private var usersList = mutableListOf<Transaction>()
+    private var originalUsersList = mutableListOf<Transaction>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,59 +22,68 @@ class HistoryPage : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recycler_view_history)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = TransactionAdapter(this, getTransactionList()) // Provide transaction list
+        adapter = TransactionAdapter(this, getList())
         recyclerView.adapter = adapter
 
-        addSampleTransactionData()
-    }
 
-    // Method to get transaction list, you need to implement it based on your requirement
-    private fun getTransactionList(): List<Transaction> {
-        val transactionList = mutableListOf<Transaction>()
-        // Add your logic to fetch transaction history from Firestore or any other source
-        return transactionList
-    }
+        val accountNumber = intent.getStringExtra("accountNumber")
 
 
-    private fun addSampleTransactionData() {
-        // Define sample transaction data
-        val currentDate = Calendar.getInstance().time
-
-        val transactionData = hashMapOf(
-            "accountNumber" to "12", // Sample account number
-            "loanType" to "Regular",
-            "loanAmount" to 5000,
-            "loanDate" to currentDate // Sample date, you can use current date or any date format you prefer
-        )
-
-        // Add the transaction data to Firestore
-        try {
-            db.collection("TransactionHistory").document("11")// Account number as document ID
-                .collection("11") // Subcollection with same account number
-                .add(transactionData) // Use add() instead of set() to let Firestore auto-generate the document ID
-                .addOnSuccessListener { documentReference ->
-                    // Data added successfully
-                    val documentId = documentReference.id
-                    val message = "Transaction added successfully with ID: $documentId"
-                    showToast(message)
-                    Log.d("Firestore", message) // Print to logcat
-                }
-                .addOnFailureListener { exception ->
-                    // Handle errors
-                    val errorMessage = "Failed to add transaction: $exception"
-                    showToast(errorMessage)
-                    Log.e("Firestore", errorMessage) // Print to logcat
-                }
-        } catch (e: Exception) {
-            // Catch any exceptions
-            val errorMessage = "Exception occurred: ${e.message}"
-            showToast(errorMessage)
-            Log.e("Firestore", errorMessage) // Print to logcat
+        if (accountNumber != null) {
+            fetchUsersFromFirestore(accountNumber)
+        } else {
+            Log.e("HistoryPage", "Account number is null")
         }
     }
-
-    // Method to show toast message
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    private fun getList(): List<Transaction> {
+        val usersList = mutableListOf<Transaction>()
+        usersList.add(Transaction(1, "12/12/12", "Special", 12000.0))
+        return usersList
     }
+
+    private fun fetchUsersFromFirestore(accountNumber: String) {
+        db.collection("Users")
+            .whereEqualTo("accountNo", accountNumber)
+            .get()
+            .addOnSuccessListener { result ->
+                val transactionsList = mutableListOf<Transaction>() // List to hold all transactions
+                var currentSrNo = 1 // Initial value for serial number
+
+                for (document in result) {
+                    val transactions = document.get("transactions") as? ArrayList<HashMap<String, Any>> ?: arrayListOf()
+
+                    // Iterate over each transaction in the transactions list
+                    for (transaction in transactions) {
+                        val user = document.toObject(Transaction::class.java)
+                        val loanType = transaction["loanType"] as String
+                        user.serialNumber = currentSrNo++
+                        user.loanType = loanType
+                        val loanAmount = transaction["loanAmount"] as Double
+                        user.loanAmount = loanAmount
+                        val transactionDate = transaction["transactionDate"] as String
+                        user.date = transactionDate
+                        transactionsList.add(user)
+                        // Create a Transaction object and add it to the transactions list
+
+                    }
+
+//                    transactionsList.reverse()
+
+                    this.usersList.addAll(transactionsList)
+                    originalUsersList.addAll(transactionsList)
+                    adapter.setTransactions(transactionsList)
+                }
+
+                // Now, transactionsList contains all transactions from all documents in the "UserList" collection
+                // You can print or display this data in your table as needed
+                for (transaction in transactionsList) {
+                    Log.d("TransactionData", "Serial Number: ${transaction.serialNumber}, Date: ${transaction.date}, Loan Type: ${transaction.loanType}, Loan Amount: ${transaction.loanAmount}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors
+                Log.e("FirestoreError", "Error fetching users: $exception")
+            }
+    }
+
 }

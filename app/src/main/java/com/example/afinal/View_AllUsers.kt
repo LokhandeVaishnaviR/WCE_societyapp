@@ -2,6 +2,7 @@ package com.example.afinal
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
@@ -13,36 +14,36 @@ class View_AllUsers : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_all_users)
-
-        val accountNumberTextView: MaterialTextView = findViewById(R.id.accountNumber)
-
-        val fullNameEditText: TextInputEditText = findViewById(R.id.fullNameEditText)
-
-        val specialLoanEditText: TextInputEditText = findViewById(R.id.SpecialLoanEditText)
-        val specialLoanInterestEditText: TextInputEditText = findViewById(R.id.SpecialLoanInterestEditText)
-        val specialLoanInstallmentEditText: TextInputEditText = findViewById(R.id.SpecialLoanInstallmentEditText)
-
-        val regularLoanEditText: TextInputEditText = findViewById(R.id.RegularLoanEditText)
-        val regularLoanInterestEditText: TextInputEditText = findViewById(R.id.RegularLoanInterestEditText)
-        val regularLoanInstallmentEditText: TextInputEditText = findViewById(R.id.RegularLoanInstallmentEditText)
+        setContentView(R.layout.view_all_users)
 
 
-        val emergencyLoanEditText: TextInputEditText = findViewById(R.id.EmergencyLoanEditText)
-        val emergencyLoanInterestEditText: TextInputEditText = findViewById(R.id.EmergencyLoanInterestEditText)
-        val emergencyLoanInstallmentEditText: TextInputEditText = findViewById(R.id.EmergencyLoanInstallmentEditText)
+        val accountNumberTextView = findViewById<TextView>(R.id.accountNumberText)
+        val fullNameEditText= findViewById<TextView>(R.id.fullNameText)
+
+        val specialLoanEditText = findViewById<TextView>(R.id.SpecialLoanText)
+        val specialLoanInterestEditText= findViewById<TextView>(R.id.SpecialLoanInterestText)
+        val specialLoanInstallmentEditText = findViewById<TextView>(R.id.SpecialLoanInstallmentText)
+
+        val regularLoanEditText = findViewById<TextView>(R.id.RegularLoanText)
+        val regularLoanInterestEditText = findViewById<TextView>(R.id.RegularLoanInterestText)
+        val regularLoanInstallmentEditText = findViewById<TextView>(R.id.RegularLoanInstallmentEditText)
 
 
-        val penaltyInterestEditText: TextInputEditText = findViewById(R.id.PenaltyInterestEditText)
-        val sharesEditText: TextInputEditText = findViewById(R.id.SharesEditText)
-        val grossPayEditText: TextInputEditText = findViewById(R.id.GrossPayEditText)
+        val emergencyLoanEditText = findViewById<TextView>(R.id.EmergencyLoanEditText)
+        val emergencyLoanInterestEditText = findViewById<TextView>(R.id.EmergencyLoanInterestEditText)
+        val emergencyLoanInstallmentEditText = findViewById<TextView>(R.id.EmergencyLoanInstallmentEditText)
 
-        val collegeDeductionEditText: TextInputEditText = findViewById(R.id.CollegeDeductionEditText)
-        val arrearsEditText: TextInputEditText = findViewById(R.id.ArrearsEditText)
-        val retirementDateEditText: TextInputEditText = findViewById(R.id.RetirementDateEditText)
 
-        val societyDeductionEditText: TextInputEditText = findViewById(R.id.SocietyDeductionEditText)
-        val totalEditText: TextInputEditText = findViewById(R.id.TotalEditText)
+        val penaltyInterestEditText = findViewById<TextView>(R.id.PenaltyInterestEditText)
+        val sharesEditText = findViewById<TextView>(R.id.SharesEditText)
+        val grossPayEditText = findViewById<TextView>(R.id.GrossPayEditText)
+
+        val collegeDeductionEditText = findViewById<TextView>(R.id.CollegeDeductionEditText)
+        val arrearsEditText = findViewById<TextView>(R.id.ArrearsEditText)
+        val retirementDateEditText = findViewById<TextView>(R.id.RetirementDateEditText)
+
+        val societyDeductionEditText = findViewById<TextView>(R.id.SocietyDeductionEditText)
+        val totalEditText = findViewById<TextView>(R.id.TotalEditText)
 
 
 

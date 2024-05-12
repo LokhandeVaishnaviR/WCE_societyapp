@@ -13,6 +13,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class JamindarSelect_RequestLoan : AppCompatActivity() {
 
@@ -35,10 +38,16 @@ class JamindarSelect_RequestLoan : AppCompatActivity() {
         val distributedAmount: Long
     )
 
+    data class TransactionHistory(
+        val loanType: String,
+        val loanAmount: Double,
+        val transactionDate: String
+    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jamindar_select_request_loan)
+        setContentView(R.layout.jamindar_selection_changes)
 
         editTextAccountNumber = findViewById(R.id.editTextAccountNumber)
         editTextNomineeName = findViewById(R.id.editTextNomineeName)
@@ -58,6 +67,9 @@ class JamindarSelect_RequestLoan : AppCompatActivity() {
         Log.d("LoanData", "Interest: $interest")
         Log.d("LoanData", "Installment: $installment")
         Log.d("LoanData", "Total Deduction: $totalDeduction")
+
+
+        val currentDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
 
 
 
@@ -96,17 +108,20 @@ class JamindarSelect_RequestLoan : AppCompatActivity() {
                     editTextAccountNumber2.text.toString(),
                     editTextNomineeName.text.toString(),
                     editTextNomineeName2.text.toString(),
-                    accountNumber.toString(),
+                    accountNumber!!,
                     name,
                     dividedAmount
                 )
                 saveSuretyData(surety)
-                if (accountNumber != null) {
-                    updateLoanData(accountNumber, loanType!!, loanValue, interest!!, installment!!, totalDeduction!!)
-                }
 
+                // Fetch user data and update transactions
+                updateTransactions(accountNumber, loanType!!, loanValue, currentDate)
+
+                // Update loan data
+                updateLoanData(accountNumber, loanType, loanValue, interest!!, installment!!, totalDeduction!!)
             }
         }
+
 
     }
 
@@ -118,7 +133,7 @@ class JamindarSelect_RequestLoan : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 if (!documents.isEmpty) {
                     // Account number found, populate the nominee name
-                    val fullName = documents.documents[0].getString("name")
+                    val fullName = documents.documents[0].getString("fullName")
                     editTextNominee.setText(fullName)
                 } else {
                     // Account number not found
@@ -168,6 +183,118 @@ class JamindarSelect_RequestLoan : AppCompatActivity() {
             }
     }
 
+    private fun updateTransactions(accountNumber: String, loanType: String, loanValue: Long, currentDate: String) {
+        // Fetch user data
+        db.collection("Users")
+            .whereEqualTo("accountNo", accountNumber)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val userDocument = documents.documents[0]
+                    val transactionsList = userDocument["transactions"] as? MutableList<Map<String, Any>> ?: mutableListOf()
+
+                    // Create a new TransactionHistory object
+                    val newTransaction = mapOf(
+                        "loanType" to loanType,
+                        "loanAmount" to loanValue.toDouble(),
+                        "transactionDate" to currentDate
+                    )
+
+                    // Add the new transaction to the list
+                    transactionsList.add(newTransaction)
+
+                    // Update transactions field in the user document
+                    userDocument.reference
+                        .update("transactions", transactionsList)
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                this,
+                                "Transaction added successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        .addOnFailureListener { exception ->
+                            Toast.makeText(
+                                this,
+                                "Failed to update transactions: ${exception.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                } else {
+                    Toast.makeText(
+                        this,
+                        "User document not found",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(
+                    this,
+                    "Failed to fetch user data: ${exception.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+
+    private fun updateTransactions1(accountNumber: String, loanType: String, loanValue: Long, currentDate: String) {
+        // Fetch user data
+        db.collection("Users")
+            .whereEqualTo("accountNo", accountNumber)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val userDocument = documents.documents[0]
+                    val transactionsList = userDocument["transactions"] as? List<Map<String, Any>> ?: emptyList()
+
+                    // Convert the generic list of transactions to a list of TransactionHistory objects
+                    val transactionHistoryList = transactionsList.map { transactionMap ->
+                        TransactionHistory(
+                            transactionMap["loanType"] as String,
+                            (transactionMap["loanAmount"] as? Double) ?: 0.0,
+                            transactionMap["transactionDate"] as String
+                        )
+                    }.toMutableList() // Convert to mutable list
+
+                    // Create a new TransactionHistory object
+                    val newTransaction = TransactionHistory(loanType, loanValue.toDouble(), currentDate)
+
+                    // Add the new transaction to the list
+                    transactionHistoryList.add(newTransaction)
+
+                    // Update transactions field in the user document
+                    userDocument.reference
+                        .set(mapOf("transactions" to transactionHistoryList))
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                this,
+                                "Transaction added successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        .addOnFailureListener { exception ->
+                            Toast.makeText(
+                                this,
+                                "Failed to update transactions: ${exception.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                } else {
+                    Toast.makeText(
+                        this,
+                        "User document not found",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(
+                    this,
+                    "Failed to fetch user data: ${exception.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
 
     private fun updateLoanData(
         accountNumber: String,
@@ -182,9 +309,6 @@ class JamindarSelect_RequestLoan : AppCompatActivity() {
         val installmentValue = installment.toDoubleOrNull() ?: 0.0
         val totalDeductionValue = totalDeduction.toDoubleOrNull() ?: 0.0
 
-        Log.d(TAG, "Interest Value: $interest")
-
-
         db.collection("UserList")
             .whereEqualTo("accountNumber", accountNumber)
             .get()
@@ -194,42 +318,63 @@ class JamindarSelect_RequestLoan : AppCompatActivity() {
                     val previousSpecialLoan = document.getLong("previousSpecialLoan") ?: 0L
                     val previousSpecialLoanInterest = document.getLong("previousSpecialLoanInterest") ?: 0L
                     val previousSpecialLoanInstallment = document.getLong("previousSpecialLoanInstallment") ?: 0L
+                    val previousRegularLoan = document.getLong("previousRegularLoan") ?: 0L
+                    val previousRegularLoanInterest = document.getLong("previousRegularLoanInterest") ?: 0L
+                    val previousRegularLoanInstallment = document.getLong("previousRegularLoanInstallment") ?: 0L
+                    val previousEmergencyLoan = document.getLong("previousEmergencyLoan") ?: 0L
+                    val previousEmergencyLoanInterest = document.getLong("previousEmergencyLoanInterest") ?: 0L
+                    val previousEmergencyLoanInstallment = document.getLong("previousEmergencyLoanInstallment") ?: 0L
 
-                    val updatedPreviousSpecialLoan = previousSpecialLoan + loanValue
-                    val updatedPreviousSpecialLoanInterest = previousSpecialLoanInterest + interestValue
-                    val updatedPreviousSpecialLoanInstallment = previousSpecialLoanInstallment + installmentValue
+                    val dataToUpdate = hashMapOf<String, Any>()
 
-                    val dataToUpdate = hashMapOf<String, Any>(
-                        "previousSpecialLoan" to updatedPreviousSpecialLoan,
-                        "previousSpecialLoanInterest" to updatedPreviousSpecialLoanInterest,
-                        "previousSpecialLoanInstallment" to updatedPreviousSpecialLoanInstallment,
-                        "totalDeduction" to (totalDeductionValue + totalDeductionValue)
-                    )
+                    when (loanType) {
+                        "Special Loan" -> {
+                            val updatedPreviousSpecialLoan = previousSpecialLoan + loanValue
+                            val updatedPreviousSpecialLoanInterest = previousSpecialLoanInterest + interestValue
+                            val updatedPreviousSpecialLoanInstallment = previousSpecialLoanInstallment + installmentValue
 
-                    if (loanType == "Special Loan") {
-                        document.reference
-                            .update(dataToUpdate)
-                            .addOnSuccessListener {
-                                Toast.makeText(
-                                    this,
-                                    "Loan data updated successfully",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            .addOnFailureListener { exception ->
-                                Toast.makeText(
-                                    this,
-                                    "Failed to update loan data: ${exception.message}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "Loan type is not Special Loan, no updates performed",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                            dataToUpdate["previousSpecialLoan"] = updatedPreviousSpecialLoan
+                            dataToUpdate["previousSpecialLoanInterest"] = updatedPreviousSpecialLoanInterest
+                            dataToUpdate["previousSpecialLoanInstallment"] = updatedPreviousSpecialLoanInstallment
+                        }
+                        "Regular Loan" -> {
+                            val updatedPreviousRegularLoan = previousRegularLoan + loanValue
+                            val updatedPreviousRegularLoanInterest = previousRegularLoanInterest + interestValue
+                            val updatedPreviousRegularLoanInstallment = previousRegularLoanInstallment + installmentValue
+
+                            dataToUpdate["previousRegularLoan"] = updatedPreviousRegularLoan
+                            dataToUpdate["previousRegularLoanInterest"] = updatedPreviousRegularLoanInterest
+                            dataToUpdate["previousRegularLoanInstallment"] = updatedPreviousRegularLoanInstallment
+                        }
+                        "Emergency Loan" -> {
+                            val updatedPreviousEmergencyLoan = previousEmergencyLoan + loanValue
+                            val updatedPreviousEmergencyLoanInterest = previousEmergencyLoanInterest + interestValue
+                            val updatedPreviousEmergencyLoanInstallment = previousEmergencyLoanInstallment + installmentValue
+
+                            dataToUpdate["previousEmergencyLoan"] = updatedPreviousEmergencyLoan
+                            dataToUpdate["previousEmergencyLoanInterest"] = updatedPreviousEmergencyLoanInterest
+                            dataToUpdate["previousEmergencyLoanInstallment"] = updatedPreviousEmergencyLoanInstallment
+                        }
                     }
+
+                    dataToUpdate["totalDeduction"] = totalDeductionValue * 2 // Double the total deduction for any loan type
+
+                    document.reference
+                        .update(dataToUpdate)
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                this,
+                                "Loan data updated successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        .addOnFailureListener { exception ->
+                            Toast.makeText(
+                                this,
+                                "Failed to update loan data: ${exception.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                 } else {
                     Toast.makeText(
                         this,

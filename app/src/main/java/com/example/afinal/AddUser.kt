@@ -54,7 +54,7 @@ class AddUser : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_user)
+        setContentView(R.layout.add_user_changes)
 
         val db = Firebase.firestore
         
