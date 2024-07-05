@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
+
+    <!-- Your existing ScrollView with content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/addDataHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update Data"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Account Number input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/accountNumberLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Account Number"
+                style="@style/HintStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/addDataHeading"
+
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/accountNumberEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/fetchDataButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Fetch"
+                android:textSize="18sp"
+                android:background="@drawable/rounded_background_button"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/accountNumberLayout"
+                app:layout_constraintStart_toStartOf="@id/accountNumberLayout"
+                app:layout_constraintEnd_toEndOf="@id/accountNumberLayout"
+                android:layout_marginTop="16dp"/>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fullName"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/fetchDataButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fullNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/SpecialLoan"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Special Loan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/fullName"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SpecialLoanEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/SpecialLoanInterest"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Special Loan Interest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/SpecialLoan"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SpecialLoanInterestEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/SpecialLoanInstallment"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Special Loan Installment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/SpecialLoanInterest"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SpecialLoanInstallmentEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/RegularLoan"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Regular Loan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/SpecialLoanInstallment"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RegularLoanEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/RegularLoanInterest"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Regular Loan Interest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/RegularLoan"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RegularLoanInterestEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/RegularLoanInstallment"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Regular Loan Installment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/RegularLoanInterest"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RegularLoanInstallmentEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EmergencyLoan"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Emergency Loan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/RegularLoanInstallment"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EmergencyLoanEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EmergencyLoanInterest"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Emergency Loan Interest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/EmergencyLoan"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EmergencyLoanInterestEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EmergencyLoanInstallment"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Emergency Loan Installment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/EmergencyLoanInterest"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EmergencyLoanInstallmentEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/PenaltyInterest"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Penalty Interest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/EmergencyLoanInstallment"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PenaltyInterestEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Shares"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Shares"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/PenaltyInterest"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SharesEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/GrossPay"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Gross Pay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/Shares"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/GrossPayEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ThirtyThreePercent"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Thirty Three Percent Amount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/GrossPay"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ThirtyThreePercentEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/CollegeDeduction"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="College Deduction"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/ThirtyThreePercent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/CollegeDeductionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Vima"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Vima"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/CollegeDeduction"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/VimaEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Arrears"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Arrears"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/Vima"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ArrearsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/RetirementDate"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Retirement year"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/Arrears"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/retirementEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:onClick="showDatePickerDialog"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TotalMonths"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Total Months Until Retirement"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/RetirementDate"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/totalMonthsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/SocietyDeduction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Society Deduction"
+                style="@style/HintStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/TotalMonths"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/SocietyDeductionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"
+                    android:inputType="none"/>
+
+                <Button
+                    android:id="@+id/societyDeductionBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Society Deduct"
+                    android:layout_marginTop="5dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Total"
+                android:layout_width="0dp"
+                style="@style/HintStyle"
+                android:layout_height="wrap_content"
+                android:hint="Total"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/SocietyDeduction"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_percent="1.0"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TotalEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@android:color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/updateDataButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update Data"
+                app:layout_constraintTop_toBottomOf="@id/Total"
+                app:layout_constraintStart_toStartOf="@id/Total"
+                app:layout_constraintEnd_toEndOf="@id/Total"
+                android:layout_marginTop="8dp"/>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</RelativeLayout>
